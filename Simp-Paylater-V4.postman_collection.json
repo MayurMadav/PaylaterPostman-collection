@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "a1852816-0b6d-42a0-922c-5c48b0f244e6",
+		"name": "Simp-Paylater-V4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Step-1:Eligibility",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "54c95ddba25667766b40f28e6e7cfd78",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount_in_paise\": 100,\r\n    \"phone_number\": \"8286941557\",\r\n    \"device_params\": {\r\n        \"SIMPL-AdId\": \"\",\r\n        \"SIMPL-DEVICE-MANUFACTURER\": \"\",\r\n        \"SIMPL-DEVICE-MODEL\": \"\",\r\n        \"SIMPL-isR\": \"\",\r\n        \"SIMPL-AndId\": \"\",\r\n        \"SIMPL-IPA\": \"\",\r\n        \"SIMPL-PAV\": \"\",\r\n        \"SIMPL-InApp\": \"\",\r\n        \"SIMPL-Ltln\": \"\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-transactions-api.getsimpl.com/api/v4/check_eligibility",
+					"protocol": "https",
+					"host": [
+						"sandbox-transactions-api",
+						"getsimpl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v4",
+						"check_eligibility"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Step-1.2:Chrage API",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "54c95ddba25667766b40f28e6e7cfd78",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount_in_paise\": 10000,\r\n    \"token\": \"dade5694ff23317549f4e1ff6f37119d219188d0\",\r\n    \"order_id\": \"34ffff\",\r\n    \"items\": [\r\n    {\r\n    \"sku\": \"some unique id\",\r\n    \"quantity\": \"12\",\r\n    \"rate_per_item\": \"1200\"\r\n    }\r\n    ],\r\n    \"shipping_address\": {\r\n    \"line1\":\"b7-701 tower 7\",       \r\n    \"line2\":\"Near kalyan east\",\r\n    \"city\":\"Thane\",\r\n    \"state\":\"Maharashtra\",\r\n    \"country\": \"India\"\r\n    },\r\n    \"billing_address\":{\r\n    \"line1\":\"b7-701 tower 7\",       \r\n    \"line2\":\"Near kalyan east\",\r\n    \"city\":\"Thane\",\r\n    \"state\":\"Maharashtra\",\r\n    \"country\": \"India\"\r\n    },\r\n    \"metadata\": {\r\n    \"email\": \"test@getsimpl.com\", \r\n    \"customer_id\": \"23441222\" \r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-transactions-api.getsimpl.com/api/v4/transaction",
+					"protocol": "https",
+					"host": [
+						"sandbox-transactions-api",
+						"getsimpl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v4",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delinking Api",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "54c95ddba25667766b40f28e6e7cfd78",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone_number\": \"9799073865\"\r\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-transactions-api.getsimpl.com/api/v4/users/delink",
+					"protocol": "https",
+					"host": [
+						"sandbox-transactions-api",
+						"getsimpl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v4",
+						"users",
+						"delink"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refund Api",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "54c95ddba25667766b40f28e6e7cfd78",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount_in_paise\": 100,\r\n    \"reason\": \"Testing\",\r\n    \"transaction_id\": \"8628ee11-f0ea-4522-aab3-3d2c79300eb9\",\r\n    \"merchant_client_id\":\"d3eda9dec676e7a153b0070916325635\"\r\n}"
+				},
+				"url": {
+					"raw": "https://sandbox-transactions-api.getsimpl.com/api/v4/refund",
+					"protocol": "https",
+					"host": [
+						"sandbox-transactions-api",
+						"getsimpl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v4",
+						"refund"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Transaction",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "54c95ddba25667766b40f28e6e7cfd78",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandbox-transactions-api.getsimpl.com/api/v4/transaction_by_order_id/34ffff",
+					"protocol": "https",
+					"host": [
+						"sandbox-transactions-api",
+						"getsimpl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v4",
+						"transaction_by_order_id",
+						"34ffff"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Transactions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "54c95ddba25667766b40f28e6e7cfd78",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandbox-transactions-api.getsimpl.com/api/v4/transactions",
+					"protocol": "https",
+					"host": [
+						"sandbox-transactions-api",
+						"getsimpl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v4",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
